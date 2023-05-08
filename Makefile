@@ -33,6 +33,7 @@ PARENTDIR  = $(WORKINGDIR)/..
 SYSTEMINC  = /opt/local/include
 LIBS       = $(WORKINGDIR)/libs
 EIGEN      = $(LIBS)/eigen
+EIGENINT   = $(LIBS)/eigen-stl-interface
 GTEST      = $(LIBS)/googletest
 LIBGTEST   = $(LIBS)/googletest/build/lib
 
@@ -49,7 +50,7 @@ vpath %.o $(WORKINGDIR)/build
 
 ########################################################################
 ## Includes
-CXX  = $(COMPILER) $(FLAGS) $(OPT) $(WARN) $(DEBUG) $(PREPRO) -I$(SYSTEMINC) -I$(WORKINGDIR) -I$(LIBS) -I$(EIGEN) -I$(GTEST)/googletest/include
+CXX  = $(COMPILER) $(FLAGS) $(OPT) $(WARN) $(DEBUG) $(PREPRO) -I$(SYSTEMINC) -I$(WORKINGDIR) -I$(LIBS) -I$(EIGEN) -I$(EIGENINT) -I$(GTEST)/googletest/include
 INCLUDE = $(wildcard *.h $(UINCLUDE)/*.h)
 
 ########################################################################
