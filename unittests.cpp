@@ -1051,3 +1051,19 @@ TEST(EigenArrayTest, MemoryMappingVectors) {
 }
 
 // TODO: Test map_type matrix-multiplication etc.
+TEST(EigenArrayTest, MemoryMappingMatrices) {
+    struct nn {
+        math::vector<double> parameters = {1, 2, 3, 4, 5, 6};
+        math::matrix<double>::map_type iweights;
+
+        nn() : iweights(parameters.data(), 3, 2) {}
+    } nn;
+
+    // the vectors iweights and oweights now should contain the values of "parameters"
+    EXPECT_EQ(1, nn.iweights(0, 0));
+    EXPECT_EQ(2, nn.iweights(0, 1));
+    EXPECT_EQ(3, nn.iweights(1, 0));
+    EXPECT_EQ(4, nn.iweights(1, 1));
+    EXPECT_EQ(5, nn.iweights(2, 0));
+    EXPECT_EQ(6, nn.iweights(2, 1));
+}
